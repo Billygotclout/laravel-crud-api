@@ -15,10 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get("index", [CrudApisController::class, 'index']);
+
 Route::post("store", [CrudApisController::class, 'store']);
+
 Route::get("show/{id}", [CrudApisController::class, 'show']);
+
 Route::put("update/{id}", [CrudApisController::class, 'update']);
+
 Route::delete("delete/{id}",[CrudApisController::class, 'destroy']);
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
