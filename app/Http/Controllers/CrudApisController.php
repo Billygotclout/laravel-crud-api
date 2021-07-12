@@ -43,6 +43,8 @@ class CrudApisController extends Controller
 
         $crud->save();
 
+  
+
     }
 
     /**
@@ -82,9 +84,16 @@ class CrudApisController extends Controller
 
         $crud->last_name = $request->last_name;
 
-        $crud->save();
+    $result=    $crud->save();
 
+    if ($result) {
+       return ["result"=>"Details have been successfuly updated"];
     }
+    if (!$result) {
+       return ["result"=>"Details have been failed updating"];
+    }
+
+}
 
     /**
      * Remove the specified resource from storage.
@@ -97,6 +106,6 @@ class CrudApisController extends Controller
         $crud =  CrudApi::find($id);
 
         $crud->delete();
-        
+
     }
 }
